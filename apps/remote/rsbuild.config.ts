@@ -21,7 +21,7 @@ export default defineConfig({
           filename: "remoteEntry.js",
           exposes: {
             "./App": "./src/mfe.tsx",
-          }
+          }, shared: ["react", "react-dom", "@repo/auth"],
         }),
       ]);
     },

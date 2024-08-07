@@ -14,6 +14,29 @@ init({
       entry: "http://localhost:3001/mf-manifest.json",
     },
   ],
+  shared: {
+    react: {
+      version: "^18.3.1",
+      shareConfig: {
+        singleton: true,
+        requiredVersion: "^18.3.1"
+      }
+    },
+    "react-dom": {
+      version: "^18.3.1",
+      shareConfig: {
+        singleton: true,
+        requiredVersion: "^18.3.1"
+      }
+    },
+    "@repo/auth": {
+      version: "^0.0.1",
+      shareConfig: {
+        singleton: true,
+        requiredVersion: "^0.0.1"
+      }
+    },
+  },
 });
 
 const FallbackLoading = () => {
@@ -33,12 +56,17 @@ const FallbackError = () => {
 };
 
 const Home = () => {
-  const auth = useAuth();
+  const { user, changeUser } = useAuth();
+
+  useEffect(() => {
+    console.log("[SHELL]: User changed:", user);
+  }, [user])
+
   return (
-    <div className="content">
+    <div>
       <h1>Shell</h1>
-      <p>{auth.user ? `Hello, ${auth.user}!` : "Hello, guest!"}</p>
-      <button onClick={() => auth.changeUser('Visitor')}>Change</button>
+      <p>{user ? `Hello, ${user}!` : "Hello, guest!"}</p>
+      <button onClick={() => changeUser('Visitor')}>Change</button>
     </div>
   );
 };
@@ -57,7 +85,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route index Component={Home} />
-              <Route path="/remote/*" Component={() => <AppRemote />} />
+              <Route path="/remote/*" Component={() => (<><AppRemote /><Home /></>)} />
             </Routes>
           </BrowserRouter>
         </AuthProvider>

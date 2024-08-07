@@ -1,11 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./app.css";
 import { AuthProvider, useAuth } from "@repo/auth";
+import { useEffect } from "react";
 
 const Home = () => {
   const { user, login } = useAuth();
+  useEffect(() => {
+    console.log("[REMOTE]: User changed:", user);
+  }, [user])
+
   return (
-    <div className="content">
+    <div>
       <h1>Remote</h1>
       <p>{user ? `Hello, ${user}!` : "Hello, guest!"}</p>
       <button onClick={login}>Sign</button>

@@ -10,9 +10,10 @@
   "dependencies": {
     "@module-federation/bridge-react": "^0.3.5",
     "@module-federation/runtime": "^0.3.5",
-    "react": "^18.3.1",
+    "@repo/auth": "workspace:*",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.0.13",
+    "react": "^18.3.1",
     "react-router-dom": "^6.26.0"
   },
   "devDependencies": {

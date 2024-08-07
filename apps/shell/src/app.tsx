@@ -4,6 +4,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createRemoteComponent } from "@module-federation/bridge-react";
 import { init, loadRemote } from "@module-federation/runtime";
+import { AuthProvider, useAuth } from "@repo/auth";
 
 init({
   name: "shell",
@@ -32,9 +33,11 @@ const FallbackError = () => {
 };
 
 const Home = () => {
+  const { user } = useAuth();
   return (
     <div className="content">
       <h1>Shell</h1>
+      <p>{user ? `Hello, ${user}!` : "Hello, guest!"}</p>
     </div>
   );
 };
@@ -49,12 +52,14 @@ const App = () => {
   return (
     <ErrorBoundary fallback={<FallbackLoading />}>
       <Suspense fallback={<FallbackLoading />}>
-        <BrowserRouter>
-          <Routes>
-            <Route index Component={Home} />
-            <Route path="/remote/*" Component={() => <AppRemote />} />
-          </Routes>
-        </BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route index Component={Home} />
+              <Route path="/remote/*" Component={() => <AppRemote />} />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
       </Suspense>
     </ErrorBoundary>
   );

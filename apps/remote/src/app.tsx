@@ -1,10 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./app.css";
+import { AuthProvider, useAuth } from "@repo/auth";
 
 const Home = () => {
+  const { user } = useAuth();
   return (
     <div className="content">
       <h1>Remote</h1>
+      <p>{user ? `Hello, ${user}!` : "Hello, guest!"}</p>
     </div>
   );
 };
@@ -19,12 +22,14 @@ const About = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index Component={Home} />
-        <Route path="/about" Component={About} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route index Component={Home} />
+          <Route path="/about" Component={About} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 };
 

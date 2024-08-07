@@ -8,20 +8,19 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
-    "@module-federation/bridge-react": "^0.3.1",
-    "@module-federation/runtime": "^0.3.1",
+    "@module-federation/bridge-react": "^0.3.5",
+    "@module-federation/runtime": "^0.3.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.0.13",
-    "react-router-dom": "^6.25.1"
+    "react-router-dom": "^6.26.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@rsbuild/core": "1.0.1-beta.4",
-    "@rsbuild/plugin-react": "1.0.1-beta.4",
+    "@rsbuild/core": "1.0.1-beta.10",
+    "@rsbuild/plugin-react": "1.0.1-beta.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.4"
   }
 }

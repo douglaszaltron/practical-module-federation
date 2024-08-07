@@ -33,12 +33,12 @@ const FallbackError = () => {
 };
 
 const Home = () => {
-  const { user, changeUser } = useAuth();
+  const auth = useAuth();
   return (
     <div className="content">
       <h1>Shell</h1>
-      <p>{user ? `Hello, ${user}!` : "Hello, guest!"}</p>
-      <button onClick={() => changeUser('Visitor')}>Change</button>
+      <p>{auth.user ? `Hello, ${auth.user}!` : "Hello, guest!"}</p>
+      <button onClick={() => auth.changeUser('Visitor')}>Change</button>
     </div>
   );
 };

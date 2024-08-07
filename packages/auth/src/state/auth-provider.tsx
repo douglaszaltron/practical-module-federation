@@ -21,7 +21,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const contextValue = useMemo(() => {
     return { ...state, login, changeUser, provided: true }
-  }, []);
+  }, [state]);
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

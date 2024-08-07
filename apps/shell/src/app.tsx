@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import "./app.css";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -33,11 +33,12 @@ const FallbackError = () => {
 };
 
 const Home = () => {
-  const { user } = useAuth();
+  const { user, changeUser } = useAuth();
   return (
     <div className="content">
       <h1>Shell</h1>
       <p>{user ? `Hello, ${user}!` : "Hello, guest!"}</p>
+      <button onClick={() => changeUser('Visitor')}>Change</button>
     </div>
   );
 };

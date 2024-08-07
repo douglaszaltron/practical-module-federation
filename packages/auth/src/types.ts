@@ -1,6 +1,7 @@
 
 export interface AuthContextProps {
   login: () => void;
+  changeUser: (user: string) => void;
   user?: string;
   provided: boolean;
 }

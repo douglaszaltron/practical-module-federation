@@ -3,11 +3,12 @@ import "./app.css";
 import { AuthProvider, useAuth } from "@repo/auth";
 
 const Home = () => {
-  const { user } = useAuth();
+  const { user, login } = useAuth();
   return (
     <div className="content">
       <h1>Remote</h1>
       <p>{user ? `Hello, ${user}!` : "Hello, guest!"}</p>
+      <button onClick={login}>Sign</button>
     </div>
   );
 };

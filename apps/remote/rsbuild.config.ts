@@ -23,17 +23,9 @@ export default defineConfig({
             "./App": "./src/mfe.tsx",
           },
           shared: {
-            react: {
-              singleton: true,
-              requiredVersion: "^18.3.1",
-            },
-            "react-dom": {
-              singleton: true,
-              requiredVersion: "^18.3.1",
-            },
             "@repo/auth": {
-              singleton: true,
-              requiredVersion: "^0.0.1",
+              eager: true,
+              requiredVersion: false,
             },
           },
         }),

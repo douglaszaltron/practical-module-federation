@@ -21,7 +21,21 @@ export default defineConfig({
           filename: "remoteEntry.js",
           exposes: {
             "./App": "./src/mfe.tsx",
-          }, shared: ["react", "react-dom", "@repo/auth"],
+          },
+          shared: {
+            react: {
+              singleton: true,
+              requiredVersion: "^18.3.1",
+            },
+            "react-dom": {
+              singleton: true,
+              requiredVersion: "^18.3.1",
+            },
+            "@repo/auth": {
+              singleton: true,
+              requiredVersion: "^0.0.1",
+            },
+          },
         }),
       ]);
     },

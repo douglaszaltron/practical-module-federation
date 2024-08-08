@@ -1,6 +1,7 @@
 import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
+import { dependencies as deps } from './package.json';
 
 export default defineConfig({
   plugins: [pluginReact()],
@@ -24,17 +25,22 @@ export default defineConfig({
           exposes: {
             './App': './src/mfe.tsx',
           },
-          shared: {
-            react: {
-              singleton: true,
+          shared: [
+            {
+              react: {
+                singleton: true,
+                requiredVersion: deps.react,
+              },
+              'react-dom': {
+                singleton: true,
+                requiredVersion: deps['react-dom'],
+              },
+              '@repo/auth': {
+                singleton: true,
+                requiredVersion: deps['@repo/auth'],
+              },
             },
-            'react-dom': {
-              singleton: true,
-            },
-            '@repo/auth': {
-              singleton: true,
-            },
-          },
+          ],
         }),
       ]);
     },

@@ -23,7 +23,7 @@ export default defineConfig({
           name: 'hostBuild',
           filename: 'remoteEntry.js',
           remotes: {
-            remote: 'remote@http://localhost:3001/remoteEntry.js',
+            remote: 'remote@http://localhost:3001/mf-manifest.json',
           },
           shared: [
             {

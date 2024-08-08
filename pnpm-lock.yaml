@@ -15,7 +15,7 @@ importers:
         specifier: ^2.0.12
         version: 2.0.12
 
-  apps/remote:
+  apps/host-build:
     dependencies:
       '@module-federation/bridge-react':
         specifier: ^0.3.5
@@ -29,6 +29,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      react-error-boundary:
+        specifier: ^4.0.13
+        version: 4.0.13(react@18.3.1)
       react-router-dom:
         specifier: ^6.26.0
         version: 6.26.0(react-dom@18.3.1)(react@18.3.1)
@@ -55,7 +58,7 @@ importers:
         specifier: ^5.5.4
         version: 5.5.4
 
-  apps/shell:
+  apps/host-runtime:
     dependencies:
       '@module-federation/bridge-react':
         specifier: ^0.3.5
@@ -79,6 +82,46 @@ importers:
         specifier: ^6.26.0
         version: 6.26.0(react-dom@18.3.1)(react@18.3.1)
     devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/config-typescript
+      '@rsbuild/core':
+        specifier: 1.0.1-beta.11
+        version: 1.0.1-beta.11
+      '@rsbuild/plugin-react':
+        specifier: 1.0.1-beta.11
+        version: 1.0.1-beta.11(@rsbuild/core@1.0.1-beta.11)
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.3
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      typescript:
+        specifier: ^5.5.4
+        version: 5.5.4
+
+  apps/remote:
+    dependencies:
+      '@module-federation/bridge-react':
+        specifier: ^0.3.5
+        version: 0.3.5(react-dom@18.3.1)(react-router-dom@6.26.0)(react@18.3.1)
+      '@repo/auth':
+        specifier: ^0.0.1
+        version: link:../../packages/auth
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      react-router-dom:
+        specifier: ^6.26.0
+        version: 6.26.0(react-dom@18.3.1)(react@18.3.1)
+    devDependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.3.5
+        version: 0.3.5(typescript@5.5.4)
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/config-typescript

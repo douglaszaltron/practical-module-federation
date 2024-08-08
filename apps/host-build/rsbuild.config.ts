@@ -5,33 +5,35 @@ import { pluginReact } from "@rsbuild/plugin-react";
 export default defineConfig({
 	plugins: [pluginReact()],
 	server: {
-		port: 3001,
+		port: 9001,
 	},
 	dev: {
-		assetPrefix: "http://localhost:3001",
+		assetPrefix: "http://localhost:9001",
 		hmr: false,
 		liveReload: false,
 	},
 	tools: {
 		rspack: (config, { appendPlugins }) => {
 			if (config.output) {
-				config.output.uniqueName = "remote";
+				config.output.uniqueName = "hostBuild";
 			}
 			appendPlugins([
 				new ModuleFederationPlugin({
-					name: "remote",
-					filename: "remoteEntry.js",
-					exposes: {
-						"./App": "./src/mfe.tsx",
+					name: "hostBuild",
+					remotes: {
+						remote: "remote@http://localhost:3001/remoteEntry.js",
 					},
 					shared: {
 						react: {
+							eager: true,
 							singleton: true,
 						},
 						"react-dom": {
+							eager: true,
 							singleton: true,
 						},
 						"@repo/auth": {
+							eager: true,
 							singleton: true,
 						},
 					},

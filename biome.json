@@ -10,6 +10,15 @@
 		}
 	},
 	"files": {
-		"ignore": ["dist", "./dist", "./dist/**", "./dist/**/*"]
+		"ignore": [
+			"dist",
+			"./dist",
+			"./dist/**",
+			"./dist/**/*",
+			"@mf-types",
+			"./@mf-types",
+			"./@mf-types/**",
+			"./@mf-types/**/*"
+		]
 	}
 }

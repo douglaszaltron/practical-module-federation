@@ -1,21 +1,21 @@
 {
-	"private": true,
-	"scripts": {
-		"build": "turbo run build",
-		"clean": "turbo run clean",
-		"dev": "turbo run dev",
-		"format": "biome check --write",
-		"lint": "turbo run lint",
-		"test": "turbo run test",
-		"typecheck": "turbo run typecheck"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.8.3",
-		"turbo": "^2.0.12"
-	},
-	"packageManager": "pnpm@8.15.6",
-	"engines": {
-		"node": ">=18"
-	},
-	"name": "kitchen-sink"
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "dev": "turbo run dev",
+    "format": "biome check --write",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "turbo": "^2.0.12"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=18"
+  },
+  "name": "kitchen-sink"
 }

@@ -1,5 +1,5 @@
-declare module "remote/App" {
-	const App: React.ComponentType;
+declare module 'remote/App' {
+  const App: React.ComponentType;
 
-	export default App;
+  export default App;
 }

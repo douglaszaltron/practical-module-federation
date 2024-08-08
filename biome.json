@@ -1,24 +1,33 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true
-		}
-	},
-	"files": {
-		"ignore": [
-			"dist",
-			"./dist",
-			"./dist/**",
-			"./dist/**/*",
-			"@mf-types",
-			"./@mf-types",
-			"./@mf-types/**",
-			"./@mf-types/**/*"
-		]
-	}
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "formatter": {
+    "indentStyle": "space"
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    },
+    "ignore": ["dist/**/*"]
+  },
+  "files": {
+    "ignore": [
+      "dist",
+      "./dist",
+      "./dist/**",
+      "./dist/**/*",
+      "@mf-types",
+      "./@mf-types",
+      "./@mf-types/**",
+      "./@mf-types/**/*"
+    ]
+  }
 }

@@ -1,26 +1,26 @@
 {
-	"name": "remote",
-	"private": true,
-	"version": "1.0.0",
-	"scripts": {
-		"dev": "rsbuild dev --open",
-		"build": "rsbuild build",
-		"preview": "rsbuild preview"
-	},
-	"dependencies": {
-		"@module-federation/bridge-react": "^0.3.5",
-		"@repo/auth": "^0.0.1",
-		"react-dom": "^18.3.1",
-		"react": "^18.3.1",
-		"react-router-dom": "^6.26.0"
-	},
-	"devDependencies": {
-		"@module-federation/enhanced": "^0.3.5",
-		"@repo/typescript-config": "workspace:*",
-		"@rsbuild/core": "1.0.1-beta.11",
-		"@rsbuild/plugin-react": "1.0.1-beta.11",
-		"@types/react": "^18.3.3",
-		"@types/react-dom": "^18.3.0",
-		"typescript": "^5.5.4"
-	}
+  "name": "remote",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "rsbuild dev --open",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "@module-federation/bridge-react": "^0.3.5",
+    "@repo/auth": "^0.0.1",
+    "react-dom": "^18.3.1",
+    "react": "^18.3.1",
+    "react-router-dom": "^6.26.0"
+  },
+  "devDependencies": {
+    "@module-federation/enhanced": "^0.3.5",
+    "@repo/typescript-config": "workspace:*",
+    "@rsbuild/core": "1.0.1-beta.11",
+    "@rsbuild/plugin-react": "1.0.1-beta.11",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.4"
+  }
 }

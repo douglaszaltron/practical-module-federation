@@ -43,7 +43,7 @@ const AppRemote = createRemoteComponent({
   loader: () => import('remote/App'),
   fallback: FallbackError,
   loading: <FallbackLoading />,
-}) as () => JSX.Element;
+}) as unknown as () => JSX.Element;
 
 const App = () => {
   return (

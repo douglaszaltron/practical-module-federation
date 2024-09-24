@@ -39,6 +39,10 @@ export default defineConfig({
                 singleton: true,
                 requiredVersion: deps['@repo/auth'],
               },
+              '@repo/echo': {
+                singleton: true,
+                requiredVersion: deps['@repo/echo'],
+              },
             },
           ],
         }),

@@ -1,13 +1,20 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './app.css';
 import { AuthProvider, useAuth } from '@repo/auth';
+import { Emitter } from '@repo/echo';
 import { useEffect } from 'react';
 
 const Home = () => {
-  const { user, login } = useAuth();
+  const { user, login, changeUser } = useAuth();
+
+  const emitter = Emitter.retrieve<{ user: string }>('shell');
+  emitter.subscribe('user', (data) => changeUser(data));
+
   useEffect(() => {
+    if (!user) return;
     console.log('[REMOTE]: User changed:', user);
-  }, [user]);
+    emitter.emit('user', user);
+  }, [user, emitter]);
 
   return (
     <div>

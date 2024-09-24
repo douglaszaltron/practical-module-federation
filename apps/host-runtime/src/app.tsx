@@ -1,11 +1,10 @@
 import { Suspense, useEffect } from 'react';
 import './app.css';
 import { createRemoteComponent } from '@module-federation/bridge-react';
-import { init, loadRemote } from '@module-federation/runtime';
+import { init, loadRemote } from '@module-federation/enhanced/runtime';
 import { AuthProvider, useAuth } from '@repo/auth';
-import * as Auth from '@repo/auth';
+import { Emitter } from '@repo/echo';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -17,38 +16,6 @@ init({
       entry: 'http://localhost:3001/mf-manifest.json',
     },
   ],
-  shared: {
-    react: {
-      version: '18.3.1',
-      scope: 'default',
-      lib: () => React,
-      shareConfig: {
-        eager: true,
-        singleton: true,
-        requiredVersion: '^18.3.1',
-      },
-    },
-    'react-dom': {
-      version: '18.3.1',
-      scope: 'default',
-      lib: () => ReactDOM,
-      shareConfig: {
-        eager: true,
-        singleton: true,
-        requiredVersion: '^18.3.1',
-      },
-    },
-    '@repo/auth': {
-      version: '0.0.1',
-      scope: 'default',
-      lib: () => Auth,
-      shareConfig: {
-        eager: true,
-        singleton: true,
-        requiredVersion: '^0.0.1',
-      },
-    },
-  },
 });
 
 const FallbackLoading = () => {
@@ -69,9 +36,15 @@ const FallbackError = () => {
 
 const Home = () => {
   const { user, changeUser } = useAuth();
+
+  const emitter = Emitter.retrieve<{ user: string }>('shell');
+  emitter.subscribe('user', (data) => changeUser(data));
+
   useEffect(() => {
+    if (!user) return;
     console.log('[SHELL]: User changed:', user);
-  }, [user]);
+    emitter.emit('user', user);
+  }, [user, emitter]);
 
   return (
     <div>
@@ -88,7 +61,7 @@ const AppRemote = createRemoteComponent({
   loader: () => loadRemote('remote/App'),
   fallback: FallbackError,
   loading: <FallbackLoading />,
-}) as () => JSX.Element;
+}) as unknown as () => JSX.Element;
 
 const App = () => {
   return (
